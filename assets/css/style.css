@@ -165,8 +165,9 @@ h1, h2, h3, h4, h5, h6 {
 * Desktop Navigation 
 */
 .navbar {
-  padding: 0;
+  /*padding: 0;*/
   margin-top: 35px;
+  padding-right: 20px;
 }
 .navbar ul {
   margin: 0;
@@ -1031,4 +1032,12 @@ section .container {
 }
 .credits a:hover {
   color: #fff;
+}
+
+.margenBtn{
+  margin-left: 5px;
+}
+
+.margenTop{
+  margin-top: 15px;
 }
