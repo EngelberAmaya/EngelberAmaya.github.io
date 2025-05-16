@@ -248,6 +248,49 @@
   });
 
   /**
+   * Handle section loaders
+   */
+  window.addEventListener('load', () => {
+    // Get all section loaders
+    const sectionLoaders = select('.section-loader', true);
+    
+    // Add a small delay to make the loader effect visible
+    setTimeout(() => {
+      // Add the loaded class to all loaders to hide them
+      sectionLoaders.forEach(loader => {
+        loader.classList.add('section-loaded');
+      });
+    }, 500);
+  });
+
+  /**
+   * Handle section loaders on scroll
+   */
+  const handleSectionLoaders = () => {
+    const sections = select('section.section-wrapper', true);
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+      
+      // If section is in viewport and loader is not already hidden
+      if (scrollPosition > (sectionTop - windowHeight + 200) && 
+          scrollPosition < (sectionTop + sectionHeight) &&
+          !section.querySelector('.section-loader').classList.contains('section-loaded')) {
+        
+        // Hide the loader for this section
+        section.querySelector('.section-loader').classList.add('section-loaded');
+      }
+    });
+  };
+
+  // Initialize loaders when page loads and on scroll
+  window.addEventListener('load', handleSectionLoaders);
+  window.addEventListener('scroll', handleSectionLoaders);
+
+  /**
    * Initiate Pure Counter 
    */
   new PureCounter();
